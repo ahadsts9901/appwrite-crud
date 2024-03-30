@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+  outline: none;
+  font-family: "Space Mono", monospace;
+  font-weight: bold;
+}
+
+@mixin formComponents($width, $radius, $shadow) {
+  padding: 0.75em 1.5em;
+  border-radius: $radius;
+  width: $width;
+  border: 0;
+  box-shadow: $shadow;
+}
+
+@mixin button {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+@mixin errorMessage($color) {
+  width: 100%;
+  text-align: center;
+  color: $color;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+@mixin postContent {
+  width: 100%;
+  text-align: left;
+  word-break: break-all;
+  font-size: 0.9em;
+  color: #353535;
+  font-weight: bold;
+}
+
+body {
+  width: 90vw;
+  height: 90vh;
+  margin: 0 auto;
+  color: #333;
+
+  #root {
+    width: 100%;
+    height: 100%;
+
+    .heading {
+      width: 100%;
+      text-align: center;
+      color: #333;
+      padding: 1em 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4em;
+      flex-wrap: wrap;
+
+      span {
+        color: #4b4b4b;
+      }
+
+      #icon {
+        width: 1.4em;
+        height: 1.4em;
+      }
+
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      padding: 1em;
+      box-sizing: border-box;
+      margin: 0 auto;
+
+      input {
+        @include formComponents(100%, 100px, 3px 3px 56px -5px rgba(134, 134, 134, 0.7));
+      }
+
+      textarea {
+        @include formComponents(100%, 10px, 3px 3px 56px -5px rgba(134, 134, 134, 0.7));
+        height: 10em;
+        resize: none;
+      }
+
+      button {
+        @include formComponents(10em, 100px,3px 3px 56px -5px rgb(82, 82, 82));
+        @include button();
+        margin-left: auto;
+      }
+
+    }
+
+    .screen {
+      width: 100%;
+      margin-top: 4em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .loader {
+        width: 40px;
+        height: 40px;
+        border: 5px solid #333;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+
+    }
+
+    .postCont {
+      width: 90vw;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      flex-wrap: wrap;
+      padding: 1em;
+
+      .post {
+        width: 250px;
+        height: 15em;
+        border-radius: 5px;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        box-shadow: 3px 3px 56px -5px rgba(77, 77, 77, 0.7);
+
+        .time {
+          width: 100%;
+          text-align: left;
+          font-size: 0.8em;
+          color: #353535;
+          font-weight: bold;
+        }
+
+        .title {
+          @include postContent();
+          overflow: auto;
+        }
+
+        .title::-moz-scrollbar {
+          display: none;
+        }
+
+        .title::-webkit-scrollbar {
+          display: none;
+        }
+
+        .text {
+          @include postContent();
+          height: 8em;
+          overflow: auto;
+        }
+
+        .text::-moz-scrollbar {
+          display: none;
+        }
+
+        .text::-webkit-scrollbar {
+          display: none;
+        }
+
+        .buttonCont {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 0.5em;
+
+          button {
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5em;
+            padding: 0.5em 1em;
+            background-color: #333;
+            border: 0;
+            color: #e0e0e0;
+            width: fit-content;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7em;
+          }
+
+        }
+
+      }
+
+    }
+
+    .errorMessage {
+      @include errorMessage(#c23b3b);
+    }
+
+    .successMessage {
+      @include errorMessage(#1d813f);
+    }
+
+  }
+
+}
+
+.loader {
+  margin-right: 1em;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.swal2-confirm:focus,
+.swal2-deny:focus,
+.swal2-cancel:focus,
+.swal2-input:focus {
+  box-shadow: 0 0 0px !important;
+}
+
+.swal2-input {
+  border: 1px solid #353535 !important;
+  width: 80%;
+  margin: 1em auto;
+  padding: 0.5em;
+}
+
+.swal2-confirm {
+  background-color: #24232c;
+}
+
+div:where(.swal2-container) div:where(.swal2-loader) {
+  border-color: #333 transparent;
+}
+
+#editTitle,
+#editText {
+  border-radius: 0px !important;
+  padding: 1.5em;
+  font-size: 0.8em !important;
+  font-weight: bold !important;
+  color: #333;
+}
+
+#editText {
+  height: 10em !important;
+  resize: none;
+}
+
+#editText.text::-moz-scrollbar {
+  display: none;
+}
+
+#editText.text::-webkit-scrollbar {
+  display: none;
+}
+
+#message {
+  width: 100%;
+  text-align: center;
+  color: #4b4b4b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  padding: 1em 0;
+  font-size: 0.9em;
+
+  span {
+    color: #333;
+  }
+
+}
