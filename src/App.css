@@ -52,6 +52,7 @@ body #root form input {
   width: 100%;
   border: 0;
   box-shadow: 3px 3px 56px -5px rgba(134, 134, 134, 0.7);
+  padding: 1.5em 2em;
 }
 body #root form textarea {
   padding: 0.75em 1.5em;
@@ -59,8 +60,10 @@ body #root form textarea {
   width: 100%;
   border: 0;
   box-shadow: 3px 3px 56px -5px rgba(134, 134, 134, 0.7);
+  padding: 1.5em 2em;
   height: 10em;
   resize: none;
+  border-radius: 20px;
 }
 body #root form button {
   padding: 0.75em 1.5em;

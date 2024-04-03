@@ -40,6 +40,10 @@
   font-weight: bold;
 }
 
+@mixin formInputs {
+  padding: 1.5em 2em;
+}
+
 body {
   width: 90vw;
   height: 90vh;
@@ -84,16 +88,19 @@ body {
 
       input {
         @include formComponents(100%, 100px, 3px 3px 56px -5px rgba(134, 134, 134, 0.7));
+        @include formInputs;
       }
 
       textarea {
         @include formComponents(100%, 10px, 3px 3px 56px -5px rgba(134, 134, 134, 0.7));
+        @include formInputs;
         height: 10em;
         resize: none;
+        border-radius: 20px
       }
 
       button {
-        @include formComponents(10em, 100px,3px 3px 56px -5px rgb(82, 82, 82));
+        @include formComponents(10em, 100px, 3px 3px 56px -5px rgb(82, 82, 82));
         @include button();
         margin-left: auto;
       }
